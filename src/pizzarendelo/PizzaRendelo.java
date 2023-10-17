@@ -77,6 +77,60 @@ public class PizzaRendelo extends javax.swing.JFrame {
        jTextFieldFizetendoOsszeg.setText(String.valueOf(fizetendoOsszeg +" " +"Ft"));
        
    }
+   private String getKivalasztottFeltetek() {
+    StringBuilder feltetek = new StringBuilder();
+    if (jCheckBoxSajt.isSelected()) {
+        feltetek.append("Sajt");
+    }
+    if (jCheckBoxParadicsom.isSelected()) {
+        feltetek.append("Paradicsom ");
+    }
+    if (jCheckBoxSonka.isSelected()) {
+        feltetek.append("Sonka ");
+    }
+    if (jCheckBoxGomba.isSelected()) {
+        feltetek.append("Gomba ");
+    }
+    if (jCheckBoxPaprika.isSelected()) {
+        feltetek.append("Paprika ");
+    }
+    if (jCheckBoxOlivabogyo.isSelected()) {
+        feltetek.append("Olivabogyó ");
+    }
+    if (jCheckBoxHagyma.isSelected()) {
+        feltetek.append("Hagyma ");
+    }
+    if (jCheckBoxPepperoni.isSelected()) {
+        feltetek.append("Pepperoni ");
+    }
+    
+    
+    
+    return feltetek.toString();
+}
+
+    private String getKivalasztottTeszta() {
+        if (jRadioButtonHaziTeszta.isSelected()) {
+            return "Házi tészta";
+        }
+        if (jRadioButtonTeljKiorl.isSelected()) {
+            return "Teljes kiörlésű";
+        }
+        if (jRadioButtonGlutenmentes.isSelected()) {
+            return "Gluténmentes";
+        }
+        return "";
+    }
+
+private String getKivalasztottMeret() {
+    if (jRadioButtonHarmincNyolc.isSelected()) {
+        return "38 cm";
+    }
+    if (jRadioButtonNegyvenOt.isSelected()) {
+        return "45 cm";
+    }
+    return "";
+}
    
     public PizzaRendelo() {
         initComponents();
@@ -458,11 +512,19 @@ public class PizzaRendelo extends javax.swing.JFrame {
         boolean vanMeretKivalasztva = jRadioButtonNegyvenOt.isSelected() || jRadioButtonHarmincNyolc.isSelected();
         boolean vanTesztaKivalasztva = jRadioButtonHaziTeszta.isSelected()|| jRadioButtonTeljKiorl.isSelected() || jRadioButtonGlutenmentes.isSelected();
         
-        if(vanMeretKivalasztva && vanTesztaKivalasztva){
-            JOptionPane.showMessageDialog(null,"Rendelésed hozzáadva","Sikeres",JOptionPane.DEFAULT_OPTION);
-        } else {
-            JOptionPane.showMessageDialog(null,"Válassz tészta fajtát és méretet","Hiba",JOptionPane.ERROR_MESSAGE);            
-        }
+         if (vanMeretKivalasztva && vanTesztaKivalasztva) {
+        // Rendelés hozzáadva, készítsd elő a számlát
+        String feltetek = getKivalasztottFeltetek();
+        String tészta = getKivalasztottTeszta();
+        String méret = getKivalasztottMeret();
+        String fizetendo = jTextFieldFizetendoOsszeg.getText();
+
+        String szamla = "Feltétek: " + feltetek + "\nTészta: " + tészta + "\nMéret: " + méret + "\nFizetendő összeg: " + fizetendo;
+
+        JOptionPane.showMessageDialog(this, szamla, "Számla", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(null, "Válassz tészta fajtát és méretet", "Hiba", JOptionPane.ERROR_MESSAGE);            
+    }
         
         
     }//GEN-LAST:event_jButtonRendelesActionPerformed
