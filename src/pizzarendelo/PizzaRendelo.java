@@ -509,9 +509,11 @@ private String getKivalasztottMeret() {
     }//GEN-LAST:event_jButtonKilepesActionPerformed
 
     private void jButtonRendelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRendelesActionPerformed
+        JOptionPane.showMessageDialog(null, "Tesztverzió!");
+        
+        
         boolean vanMeretKivalasztva = jRadioButtonNegyvenOt.isSelected() || jRadioButtonHarmincNyolc.isSelected();
         boolean vanTesztaKivalasztva = jRadioButtonHaziTeszta.isSelected()|| jRadioButtonTeljKiorl.isSelected() || jRadioButtonGlutenmentes.isSelected();
-        
          if (vanMeretKivalasztva && vanTesztaKivalasztva) {
         // Rendelés hozzáadva, készítsd elő a számlát
         String feltetek = getKivalasztottFeltetek();
