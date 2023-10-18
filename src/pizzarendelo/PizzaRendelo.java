@@ -509,7 +509,7 @@ private String getKivalasztottMeret() {
     }//GEN-LAST:event_jButtonKilepesActionPerformed
 
     private void jButtonRendelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRendelesActionPerformed
-        JOptionPane.showMessageDialog(null, "Tesztverzió!","Cím",2);
+       
         
         
         boolean vanMeretKivalasztva = jRadioButtonNegyvenOt.isSelected() || jRadioButtonHarmincNyolc.isSelected();
